@@ -34,4 +34,9 @@ VALUES ('Buy milk', 1),
   ('Buy bread', 2),
   ('Buy eggs', 2);
 INSERT INTO shared_todos (todo_id, user_id, shared_with_id)
-VALUES(1, 1, 2)
+VALUES(1, 1, 2);
+
+SELECT todos.*, shared_todos.shared_with_id
+FROM todos
+LEFT JOIN shared_todos ON todos.id = shared_todos.todo_id
+WHERE todos.user_id = [user_id] OR shared_todos.shared_with_id = [user_id];
